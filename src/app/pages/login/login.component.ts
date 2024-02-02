@@ -12,7 +12,10 @@ export class LoginComponent {
     UserName: '',
     Password: '',
   };
-  constructor(private jobservice: JobService, private router: Router) {}
+  constructor(private jobservice: JobService, private router: Router) {
+
+   
+  }
   onLogin() {
     this.jobservice.login(this.loginObj).subscribe((res: any) => {
       if (res.result) {
@@ -20,9 +23,11 @@ export class LoginComponent {
         localStorage.setItem('jobLoginUser', JSON.stringify(res.data));
         console.log(res.data);
         this.router.navigateByUrl('/home');
+       
       } else {
         alert(res.message);
       }
     });
+    
   }
 }
